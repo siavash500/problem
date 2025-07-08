@@ -1,15 +1,30 @@
-import { useState } from 'react'
 import React from 'react'
+import {  useState } from 'react';
 
-export default function State() {
-    const [count , setCount ] =useState (0)
-   
+//this is the fucking simple state and use the useStaet
+
+
+export default function App () {
+  const [text , setText] = useState ('')
+  const [Showtext , setShowText] = useState (true);
+  
+  const isAvailable = () => {
+    setShowText(!Showtext)
+  }
   return (
-    <div>
-        <p>number: {count}</p>
-        <button onClick={()=> setCount(count +1)}>+</button>
-        <br />
-        <button onClick={()=> setCount(count -1)} >-</button>
-    </div>
+    <>
+        <button onClick={isAvailable} >Hide\Show</button><br />
+
+
+          {
+            !Showtext &&
+
+              <input type="text" placeholder='Type' 
+                onChange={(e)=> setText(e.target.value)}/>
+
+          }
+
+        <h2>{text}</h2>
+    </>
   )
 }
